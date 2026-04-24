@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Users, GraduationCap, BookOpen, ClipboardCheck,
-  FileText, Megaphone, Wallet, BarChart3, BookMarked, LogOut, School,
+  FileText, Megaphone, Wallet, BarChart3, BookMarked, LogOut, School, ShieldCheck,
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
@@ -24,6 +24,7 @@ const items: Item[] = [
   { title: "Notices",      url: "/notices",     icon: Megaphone,       roles: ["admin", "teacher", "student"] },
   { title: "Fees",         url: "/fees",        icon: Wallet,          roles: ["admin", "student"] },
   { title: "Reports",      url: "/reports",     icon: BarChart3,       roles: ["admin", "teacher", "student"] },
+  { title: "User Roles",   url: "/users",       icon: ShieldCheck,     roles: ["admin"] },
 ];
 
 export function AppSidebar() {
