@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { ClipboardCheck, Save, Check, X } from "lucide-react";
+import { ClipboardCheck, Save, Check, X, Clock } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Attendance() {
@@ -102,7 +102,7 @@ export default function Attendance() {
                     <TableCell className="font-mono text-xs">{s.admission_no}</TableCell>
                     <TableCell>
                       {canMark ? (
-                        <div className="flex gap-1">
+                        <div className="flex gap-1 flex-wrap">
                           <Button size="sm" variant={status === "present" ? "default" : "outline"}
                             className={status === "present" ? "bg-success hover:bg-success/90" : ""}
                             onClick={() => setMark(s.id, "present")}>
@@ -112,9 +112,14 @@ export default function Attendance() {
                             onClick={() => setMark(s.id, "absent")}>
                             <X className="h-3.5 w-3.5 mr-1" />Absent
                           </Button>
+                          <Button size="sm" variant={status === "late" ? "default" : "outline"}
+                            className={status === "late" ? "bg-warning hover:bg-warning/90 text-warning-foreground" : ""}
+                            onClick={() => setMark(s.id, "late")}>
+                            <Clock className="h-3.5 w-3.5 mr-1" />Late
+                          </Button>
                         </div>
                       ) : (
-                        <Badge className={status === "present" ? "bg-success" : status === "absent" ? "bg-destructive" : "bg-muted"}>
+                        <Badge className={status === "present" ? "bg-success" : status === "absent" ? "bg-destructive" : status === "late" ? "bg-warning text-warning-foreground" : "bg-muted"}>
                           {status ?? "not marked"}
                         </Badge>
                       )}
